@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+		<title>Sex position</title>
+		<script  src="js/jquery.js"></script>
+		<script  src="js/main.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<style type="text/css" media="screen">
+			@font-face {
+				font-family: centurySchoolbook;
+				src: url(/fonts/century-schoolbook.ttf);
+			}
+			body {
+			   font-family: centurySchoolbook;
+			}
+		</style>
+		<script type="text/javascript" src="cordova.js"></script>
+	</head>
+	<body onload="onLoad()" >
+		<script>
+			function onLoad() {
+				if(( /(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent) )) {
+					document.addEventListener('deviceready', initApp, false);
+				} else {
+					initApp();
+				}
+			}
+
+			var admobid = {};
+			admobid = { // for Android
+				banner: 'ca-app-pub-4295130623303670/3834194745',
+				interstitial: 'ca-app-pub-4295130623303670/6007101941'
+			};
+			
+			/*if( /(android)/i.test(navigator.userAgent) ) { 
+				admobid = { // for Android
+					banner: 'ca-app-pub-4295130623303670/3834194745',
+					interstitial: 'ca-app-pub-4295130623303670/6007101941'
+				};
+			} else if(/(ipod|iphone|ipad)/i.test(navigator.userAgent)) {
+				admobid = { // for iOS
+					banner: 'ca-app-pub-4295130623303670/3834194745',
+					interstitial: 'ca-app-pub-4295130623303670/6007101941'
+				};
+			} else {
+				admobid = { // for Windows Phone
+					banner: 'ca-app-pub-4295130623303670/3834194745',
+					interstitial: 'ca-app-pub-4295130623303670/6007101941'
+				};
+			}*/
+				
+			function initApp() {
+				if (! AdMob ) { alert( 'admob plugin not ready' ); return; }
+				initAd();
+				// display a banner at startup
+				createSelectedBanner();
+				prepareInterstitial();
+			}
+			
+			function initAd(){
+				var defaultOptions = {
+					// bannerId: admobid.banner,
+					// interstitialId: admobid.interstitial,
+					// adSize: 'SMART_BANNER',
+					// width: integer, // valid when set adSize 'CUSTOM'
+					// height: integer, // valid when set adSize 'CUSTOM'
+					position: AdMob.AD_POSITION.BOTTOM_CENTER,
+					// offsetTopBar: false, // avoid overlapped by status bar, for iOS7+
+					bgColor: 'black', // color name, or '#RRGGBB'
+					// x: integer,		// valid when set position to 0 / POS_XY
+					// y: integer,		// valid when set position to 0 / POS_XY
+					isTesting: false, // set to true, to receiving test ad for testing purpose
+					autoShow: true // auto show interstitial ad when loaded, set to false if prepare/show
+				};
+				AdMob.setOptions( defaultOptions );
+				registerAdEvents();
+			}
+			// optional, in case respond to events or handle error
+			function registerAdEvents() {
+				// new events, with variable to differentiate: adNetwork, adType, adEvent
+				document.addEventListener('onAdFailLoad', function(data){ 
+					createSelectedBanner();
+					/*alert('error: ' + data.error + 
+							', reason: ' + data.reason + 
+							', adNetwork:' + data.adNetwork + 
+							', adType:' + data.adType + 
+							', adEvent:' + data.adEvent);*/ // adType: 'banner' or 'interstitial'
+				});
+				document.addEventListener('onAdLoaded', function(data){});
+				document.addEventListener('onAdPresent', function(data){});
+				document.addEventListener('onAdLeaveApp', function(data){
+					AdMob.showInterstitial();
+				});
+				document.addEventListener('onAdDismiss', function(data){});
+			}
+			
+			// click button to call following functions
+			function getSelectedAdSize() {
+				return 'BANNER';
+			}
+			function getSelectedPosition() {
+				return parseInt( 8 );
+			}
+			function createSelectedBanner() {
+				var overlap 		= false;
+				var offsetTopBar 	= false;
+				AdMob.createBanner( {adId:admobid.banner, overlap:overlap, offsetTopBar:offsetTopBar, adSize: getSelectedAdSize(), position:getSelectedPosition()} );
+			}
+			
+			setInterval(function(){
+				//createSelectedBanner(); 
+				AdMob.showInterstitial();
+			}, 1000*60);
+			
+			/*function createBannerOfGivenSize() {
+				var w = document.getElementById('w').value;
+				var h = document.getElementById('h').value;
+				
+				AdMob.createBanner( {adId:admobid.banner,
+								   adSize:'CUSTOM', width:w, height:h,
+								   position:getSelectedPosition()} );
+			}
+			function showBannerAtSelectedPosition() {
+				AdMob.showBanner( getSelectedPosition() );
+			}
+			function showBannerAtGivenXY() {
+				var x = document.getElementById('x').value;
+				var y = document.getElementById('y').value;
+				AdMob.showBannerAtXY(x, y);
+			}
+			
+			
+			
+			function onResize(){
+				var s = document.getElementById('sizeinfo');
+				s.innerHTML = "web view: " + window.innerWidth + " x " + window.innerHeight;
+			}
+			
+			*/
+			
+			function prepareInterstitial() {
+				var autoshow = true;
+				AdMob.prepareInterstitial({adId:admobid.interstitial, autoShow:autoshow});
+			}
+			
+		</script>
+		<h1>Sex Position</h1>
+		<div id="slider">
+		  <a href="#" class="control_next">>></a>
+		  <a href="#" class="control_prev"><</a>
+		  <ul>
+			<script type="text/javascript">
+				
+				for(i=1;i<26;i++){
+					document.write('<li><img src="data/POS/'+i+'.jpg" style="300" height="250"></li>');
+				}
+			</script>
+		  </ul>  
+		</div>
+		</body>
+</html>	

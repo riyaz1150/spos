@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<widget xmlns     = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "com.malwaninfotech.SexPosition"
+        version   = "1.2">
+
+    <name>Sex Position</name>
+
+    <description>
+        Sex Position ,Find new sex position.
+    </description>
+
+    <author href="http://malwaninfotech.com" email="hr@malwaninfotech.com">
+        Malwan infotech
+    </author>
+
+    <preference name="permissions" value="none"/>
+
+	
+	<gap:plugin name="com.google.cordova.admob" source="plugins.cordova.io" />
+	
+    <icon src="res/icon/android/drawable-ldpi/mi_sp.png" gap:platform="android" gap:qualifier="ldpi" />
+    <icon src="res/icon/android/drawable-mdpi/mi_sp.png" gap:platform="android" gap:qualifier="mdpi" />
+    <icon src="res/icon/android/drawable-hdpi/mi_sp.png" gap:platform="android" gap:qualifier="hdpi" />
+    <icon src="res/icon/android/drawable-xhdpi/mi_sp.png" gap:platform="android" gap:qualifier="xhdpi" />
+    <icon src="res/icon/android/drawable-xxhdpi/mi_sp.png" gap:platform="android" gap:qualifier="xxhdpi" />
+    
+    
+    
+
+</widget>
