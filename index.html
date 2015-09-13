@@ -6,20 +6,12 @@
 		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
 		<title>Sex position</title>
 		<script  src="js/jquery.js"></script>
-		<script  src="js/main.js"></script>
+		
 		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<style type="text/css" media="screen">
-			@font-face {
-				font-family: centurySchoolbook;
-				src: url(/fonts/century-schoolbook.ttf);
-			}
-			body {
-			   font-family: centurySchoolbook;
-			}
-		</style>
+		
 		<script type="text/javascript" src="cordova.js"></script>
 	</head>
-	<body onload="onLoad()" >
+	<body  onload="onLoad()">
 		<script>
 			function onLoad() {
 				if(( /(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent) )) {
@@ -147,18 +139,23 @@
 			}
 			
 		</script>
+		<script type="text/javascript">
+			jQuery(document).ready(function ($) {
+				var lilist='';
+				for(i=1;i<33;i++){
+					$("#lilist").append('<li><img src="data/POS/'+i+'.jpg" style="300" height="250"></li>');
+				}
+			});
+		</script>
 		<h1>Sex Position</h1>
 		<div id="slider">
 		  <a href="#" class="control_next">>></a>
 		  <a href="#" class="control_prev"><</a>
-		  <ul>
-			<script type="text/javascript">
-				
-				for(i=1;i<26;i++){
-					document.write('<li><img src="data/POS/'+i+'.jpg" style="300" height="250"></li>');
-				}
-			</script>
+		  
+		  <ul id="lilist">
+			
 		  </ul>  
 		</div>
+		<script  src="js/main.js"></script>
 		</body>
 </html>	
